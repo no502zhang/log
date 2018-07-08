@@ -1,0 +1,11 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: log-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.105:3306/log?characterEncoding=utf-8
+    username: zhang
+    password: 123456

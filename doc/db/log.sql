@@ -21,6 +21,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `log_action_define`;
 CREATE TABLE `log_action_define` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `park_id` varchar(100) DEFAULT NULL COMMENT '园区',
   `code` varchar(50) NOT NULL COMMENT '编码',
   `name` varchar(100) NOT NULL COMMENT '名称',
   `desc_tmpl` varchar(1000) DEFAULT NULL COMMENT '描述模板',
@@ -40,6 +41,7 @@ CREATE TABLE `log_action_define` (
 DROP TABLE IF EXISTS `log_action_record`;
 CREATE TABLE `log_action_record` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `park_id` varchar(100) DEFAULT NULL COMMENT '园区',
   `action_id` int(11) NOT NULL,
   `user_park_id` varchar(100) DEFAULT NULL,
   `user_org_id` varchar(100) DEFAULT NULL,

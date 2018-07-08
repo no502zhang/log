@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="context1">
+		<jdbcConnection
+			connectionURL="jdbc:mysql://192.168.1.105:3306/log?characterEncoding=utf-8"
+			driverClass="com.mysql.jdbc.Driver" password="123456" userId="zhang" />
+		<javaModelGenerator targetPackage="com.wiseyq.log.model"
+			targetProject="log-impl" />
+		<sqlMapGenerator targetPackage="com.wiseyq.log.dao.mapper"
+			targetProject="log-impl" />
+		<javaClientGenerator targetPackage="???"
+			targetProject="???" type="XMLMAPPER" />
+		<table schema="log" tableName="log_action_define"></table>
+	</context>
+</generatorConfiguration>
