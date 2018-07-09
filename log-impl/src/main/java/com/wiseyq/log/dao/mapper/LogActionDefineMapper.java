@@ -5,17 +5,17 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.wiseyq.log.model.LogActionDefine;
+import com.wiseyq.log.model.ActionDefine;
 
 @Mapper
 public interface LogActionDefineMapper {
-	int insert(LogActionDefine logActionDefine);
+	int insert(ActionDefine logActionDefine);
 
-	int update(LogActionDefine logActionDefine);
+	int update(ActionDefine logActionDefine);
 
 	int deleteById(@Param("id") int id);
 
-	LogActionDefine findLogActionDefine(@Param("id") int id);
+	ActionDefine findLogActionDefine(@Param("id") int id);
 
-	List<LogActionDefine> findLogActionDefineList(LogActionDefine logActionDefine);
+	List<ActionDefine> findLogActionDefineList(ActionDefine logActionDefine);
 }

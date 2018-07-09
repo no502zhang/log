@@ -2,7 +2,7 @@ package com.wiseyq.log.model;
 
 import java.util.Date;
 
-public class LogActionDefine {
+public class ActionDefine {
 
 	private Integer id;
 

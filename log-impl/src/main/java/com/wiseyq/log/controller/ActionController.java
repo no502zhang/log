@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageInfo;
-import com.wiseyq.log.model.LogActionDefine;
+import com.wiseyq.log.model.ActionDefine;
 import com.wiseyq.log.service.ActionService;
 
 @RestController
-@RequestMapping("/actions")
+@RequestMapping("/log/actions")
 public class ActionController {
 	@Autowired
 	private ActionService actionService;
 
 	@PostMapping("/")
-	public ResponseEntity<LogActionDefine> add(LogActionDefine action) {
+	public ResponseEntity<ActionDefine> add(ActionDefine action) {
 		actionService.insert(action);
 		return ResponseEntity.ok().body(action);
 	}
@@ -34,15 +34,15 @@ public class ActionController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<LogActionDefine> update(@PathVariable("id") int id, LogActionDefine action) {
+	public ResponseEntity<ActionDefine> update(@PathVariable("id") int id, ActionDefine action) {
 		action.setId(id);
 		actionService.update(action);
 		return ResponseEntity.ok().body(action);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<LogActionDefine> getAction(@PathVariable("id") int id) {
-		LogActionDefine action = actionService.findLogActionDefine(id);
+	public ResponseEntity<ActionDefine> getAction(@PathVariable("id") int id) {
+		ActionDefine action = actionService.findLogActionDefine(id);
 		if (action != null) {
 			return ResponseEntity.ok().body(action);
 		} else {
@@ -51,9 +51,9 @@ public class ActionController {
 	}
 
 	@GetMapping("/")
-	public ResponseEntity<PageInfo<LogActionDefine>> listAction(LogActionDefine action, Integer pageNum,
+	public ResponseEntity<PageInfo<ActionDefine>> listAction(ActionDefine action, Integer pageNum,
 			Integer pageSize) {
-		PageInfo<LogActionDefine> page = actionService.findLogActionDefinePage(action, pageNum, pageSize);
+		PageInfo<ActionDefine> page = actionService.findLogActionDefinePage(action, pageNum, pageSize);
 		if (CollectionUtils.isNotEmpty(page.getList())) {
 			return ResponseEntity.ok().body(page);
 		} else {

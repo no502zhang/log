@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wiseyq.log.dao.mapper.LogActionDefineMapper;
-import com.wiseyq.log.model.LogActionDefine;
+import com.wiseyq.log.model.ActionDefine;
 import com.wiseyq.log.service.ActionService;
 
 @Service
@@ -17,12 +17,12 @@ public class ActionServiceImpl implements ActionService {
 	private LogActionDefineMapper actionDefineMapper;
 
 	@Override
-	public void insert(LogActionDefine logActionDefine) {
+	public void insert(ActionDefine logActionDefine) {
 		actionDefineMapper.insert(logActionDefine);
 	}
 
 	@Override
-	public void update(LogActionDefine logActionDefine) {
+	public void update(ActionDefine logActionDefine) {
 		actionDefineMapper.update(logActionDefine);
 	}
 
@@ -32,12 +32,12 @@ public class ActionServiceImpl implements ActionService {
 	}
 
 	@Override
-	public LogActionDefine findLogActionDefine(int id) {
+	public ActionDefine findLogActionDefine(int id) {
 		return actionDefineMapper.findLogActionDefine(id);
 	}
 
 	@Override
-	public PageInfo<LogActionDefine> findLogActionDefinePage(LogActionDefine logActionDefine, Integer pageNum,
+	public PageInfo<ActionDefine> findLogActionDefinePage(ActionDefine logActionDefine, Integer pageNum,
 			Integer pageSize) {
 		if (pageNum == null) {
 			pageNum = 1;
@@ -46,8 +46,8 @@ public class ActionServiceImpl implements ActionService {
 			pageSize = 10;
 		}
 		PageHelper.startPage(pageNum, pageSize);
-		List<LogActionDefine> list = actionDefineMapper.findLogActionDefineList(logActionDefine);
-		return new PageInfo<LogActionDefine>(list);
+		List<ActionDefine> list = actionDefineMapper.findLogActionDefineList(logActionDefine);
+		return new PageInfo<ActionDefine>(list);
 	}
 
 }
