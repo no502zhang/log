@@ -4,124 +4,123 @@ import java.util.Date;
 
 public class ActionDefine {
 
-	private Integer id;
+    private Integer id;
 
-	private String parkId;
+    private String parkId;
 
-	private String code;
+    private String code;
 
-	private String name;
+    private String name;
 
-	private String descTmpl;
+    private String descTmpl;
 
-	private String remarks;
+    private String remarks;
 
-	private String system;
+    private String system;
 
-	private String module;
+    private String module;
 
-	private String type;
+    private String type;
 
-	private String deleted;
+    private String deleted;
 
-	private Date createTime;
+    private Date createTime;
 
-	private Date updateTime;
+    private Date updateTime;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public String getParkId() {
-		return parkId;
-	}
+    public String getParkId() {
+        return parkId;
+    }
 
-	public void setParkId(String parkId) {
-		this.parkId = parkId;
-	}
+    public void setParkId(String parkId) {
+        this.parkId = parkId;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getDescTmpl() {
-		return descTmpl;
-	}
+    public String getDescTmpl() {
+        return descTmpl;
+    }
 
-	public void setDescTmpl(String descTmpl) {
-		this.descTmpl = descTmpl;
-	}
+    public void setDescTmpl(String descTmpl) {
+        this.descTmpl = descTmpl;
+    }
 
-	public String getRemarks() {
-		return remarks;
-	}
+    public String getRemarks() {
+        return remarks;
+    }
 
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
-	}
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
-	public String getSystem() {
-		return system;
-	}
+    public String getSystem() {
+        return system;
+    }
 
-	public void setSystem(String system) {
-		this.system = system;
-	}
+    public void setSystem(String system) {
+        this.system = system;
+    }
 
-	public String getModule() {
-		return module;
-	}
+    public String getModule() {
+        return module;
+    }
 
-	public void setModule(String module) {
-		this.module = module;
-	}
+    public void setModule(String module) {
+        this.module = module;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public String getDeleted() {
-		return deleted;
-	}
+    public String getDeleted() {
+        return deleted;
+    }
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
-
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 }

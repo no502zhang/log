@@ -5,10 +5,11 @@
 		<jdbcConnection
 			connectionURL="jdbc:mysql://192.168.91.105:3306/dev_cc_log?characterEncoding=utf-8"
 			driverClass="com.mysql.jdbc.Driver" password="123456" userId="zl" />
-		<javaModelGenerator targetPackage="com.wiseyq.log.model"
-			targetProject="log-impl" />
-		<sqlMapGenerator targetPackage="com.wiseyq.log.dao.mapper"
-			targetProject="log-impl" />
-		<table schema="log" tableName="log_action_record"></table>
+        <javaModelGenerator targetPackage="com.wiseyq.log.model"
+            targetProject="log-impl" />
+        <sqlMapGenerator targetPackage="com.wiseyq.log.dao.mapper"
+            targetProject="log-impl" />
+        <table schema="log" tableName="log_action_define"></table>
+        <table schema="log" tableName="log_action_record"></table>
 	</context>
 </generatorConfiguration>

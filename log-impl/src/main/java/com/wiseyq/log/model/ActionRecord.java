@@ -4,7 +4,11 @@ public class ActionRecord {
 
     private Long id;
 
+    private String parkId;
+
     private Integer actionId;
+
+    private String sourceId;
 
     private String userParkId;
 
@@ -34,12 +38,28 @@ public class ActionRecord {
         this.id = id;
     }
 
+    public String getParkId() {
+        return parkId;
+    }
+
+    public void setParkId(String parkId) {
+        this.parkId = parkId;
+    }
+
     public Integer getActionId() {
         return actionId;
     }
 
     public void setActionId(Integer actionId) {
         this.actionId = actionId;
+    }
+
+    public String getSourceId() {
+        return sourceId;
+    }
+
+    public void setSourceId(String sourceId) {
+        this.sourceId = sourceId;
     }
 
     public String getUserParkId() {

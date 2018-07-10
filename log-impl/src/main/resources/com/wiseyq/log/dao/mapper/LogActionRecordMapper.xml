@@ -3,7 +3,9 @@
 <mapper namespace="com.wiseyq.log.dao.mapper.LogActionRecordMapper">
   <resultMap id="BaseResultMap" type="com.wiseyq.log.model.ActionRecord">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="park_id" jdbcType="VARCHAR" property="parkId" />
     <result column="action_id" jdbcType="INTEGER" property="actionId" />
+    <result column="source_id" jdbcType="VARCHAR" property="sourceId" />
     <result column="user_park_id" jdbcType="VARCHAR" property="userParkId" />
     <result column="user_org_id" jdbcType="VARCHAR" property="userOrgId" />
     <result column="user_id" jdbcType="VARCHAR" property="userId" />
@@ -17,7 +19,7 @@
   </resultMap>
   
   <sql id="Base_Column_List">
-    id, action_id, user_park_id, user_org_id, user_id, user_client, user_ip, log_content, log_year, log_month, log_day, log_time
+    id, park_id, action_id, source_id, user_park_id, user_org_id, user_id, user_client, user_ip, log_content, log_year, log_month, log_day, log_time
   </sql>
   
   <select id="findLogActionRecord" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -32,8 +34,14 @@
     <include refid="Base_Column_List" />
     from log_action_record
     <where>
+      <if test="parkId != null">
+        and park_id = #{parkId,jdbcType=VARCHAR},
+      </if>
       <if test="actionId != null">
         and action_id = #{actionId,jdbcType=INTEGER}
+      </if>
+      <if test="sourceId != null">
+        and source_id = #{sourceId,jdbcType=VARCHAR},
       </if>
       <if test="userParkId != null">
         and user_park_id = #{userParkId,jdbcType=VARCHAR}
@@ -67,12 +75,18 @@
       </if>
     </where>
   </select>
-  
+
   <select id="count" parameterType="com.wiseyq.log.model.ActionRecord" resultType="java.lang.Long">
     select count(*) from log_action_record
     <where>
+      <if test="parkId != null">
+        and park_id = #{parkId,jdbcType=VARCHAR},
+      </if>
       <if test="actionId != null">
         and action_id = #{actionId,jdbcType=INTEGER}
+      </if>
+      <if test="sourceId != null">
+        and source_id = #{sourceId,jdbcType=VARCHAR},
       </if>
       <if test="userParkId != null">
         and user_park_id = #{userParkId,jdbcType=VARCHAR}
@@ -110,7 +124,9 @@
   <insert id="insert" parameterType="com.wiseyq.log.model.ActionRecord">
     insert into log_action_record (
         id, 
+        park_id, 
         action_id, 
+        source_id, 
         user_park_id, 
         user_org_id, 
         user_id, 
@@ -123,7 +139,9 @@
         log_time)
     values (
         #{id,jdbcType=BIGINT}, 
+        #{parkId,jdbcType=VARCHAR}, 
         #{actionId,jdbcType=INTEGER}, 
+        #{sourceId,jdbcType=VARCHAR}, 
         #{userParkId,jdbcType=VARCHAR}, 
         #{userOrgId,jdbcType=VARCHAR}, 
         #{userId,jdbcType=VARCHAR}, 
@@ -139,8 +157,14 @@
   <update id="update" parameterType="com.wiseyq.log.model.ActionRecord">
     update log_action_record
     <set>
+      <if test="parkId != null">
+        park_id = #{parkId,jdbcType=VARCHAR},
+      </if>
       <if test="actionId != null">
         action_id = #{actionId,jdbcType=INTEGER},
+      </if>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=VARCHAR},
       </if>
       <if test="userParkId != null">
         user_park_id = #{userParkId,jdbcType=VARCHAR},
