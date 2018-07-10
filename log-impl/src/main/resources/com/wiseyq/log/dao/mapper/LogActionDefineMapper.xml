@@ -11,13 +11,12 @@
     <result column="system" jdbcType="VARCHAR" property="system" />
     <result column="module" jdbcType="VARCHAR" property="module" />
     <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="is_deleted" jdbcType="CHAR" property="deleted" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, park_id, code, name, desc_tmpl, remarks, system, module, type, is_deleted, create_time, update_time
+    id, park_id, code, name, desc_tmpl, remarks, system, module, type, create_time, update_time
   </sql>
   
   <select id="findLogActionDefine" parameterType="java.lang.Integer" resultMap="BaseResultMap">

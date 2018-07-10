@@ -22,8 +22,6 @@ public class ActionDefine {
 
     private String type;
 
-    private String deleted;
-
     private Date createTime;
 
     private Date updateTime;
@@ -98,14 +96,6 @@ public class ActionDefine {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(String deleted) {
-        this.deleted = deleted;
     }
 
     public Date getCreateTime() {
