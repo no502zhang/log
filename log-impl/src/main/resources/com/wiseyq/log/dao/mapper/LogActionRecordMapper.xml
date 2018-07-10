@@ -150,11 +150,11 @@
         #{userId,jdbcType=VARCHAR}, 
         #{userClient,jdbcType=VARCHAR}, 
         #{userIp,jdbcType=VARCHAR}, 
-        #{logContent,jdbcType=VARCHAR}, 
-        #{logYear,jdbcType=CHAR}, 
-        #{logMonth,jdbcType=CHAR}, 
-        #{logDay,jdbcType=CHAR}, 
-        #{logTime,jdbcType=CHAR})
+        #{logContent,jdbcType=VARCHAR},
+        date_format(now(), '%Y'),
+        date_format(now(), '%m'),
+        date_format(now(), '%d'),
+        date_format(now(), '%H%i%s'))
   </insert>
 
   <update id="update" parameterType="com.wiseyq.log.model.ActionRecord">

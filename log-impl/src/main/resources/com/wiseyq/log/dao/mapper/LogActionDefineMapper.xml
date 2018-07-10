@@ -23,7 +23,19 @@
     select 
     <include refid="Base_Column_List" />
     from log_action_define
-    where id = #{id,jdbcType=INTEGER}
+    where is_deleted = 'N'
+      <choose>
+        <when test="id != null">
+          and id = #{id,jdbcType=INTEGER}
+        </when>
+        <when test="parkId != null and code != null">
+          and park_id = #{parkId,jdbcType=VARCHAR}
+          and code = #{code,jdbcType=VARCHAR}
+        </when>
+        <otherwise>
+          and 1 = 2
+        </otherwise>
+      </choose>
   </select>
   
   <select id="findLogActionDefineList" parameterType="java.lang.Integer" resultMap="BaseResultMap">

@@ -22,7 +22,11 @@ public class ActionLogServiceImpl implements ActionLogService {
     public void insert(ActionLog logActionLog) {
         ActionDefine action = actionService.findLogActionDefineByCode(logActionLog.getParkId(),
                 logActionLog.getActionCode());
+        if (action == null) {
+            throw new IllegalArgumentException("actionCode不存在");
+        }
         ActionRecord record = new ActionRecord();
+        record.setParkId(action.getParkId());
         record.setActionId(action.getId());
         actionRecordMapper.insert(record);
     }

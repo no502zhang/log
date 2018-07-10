@@ -41,6 +41,7 @@ public class ActionServiceImpl implements ActionService {
     @Override
     public ActionDefine findLogActionDefineByCode(String parkId, String actionCode) {
         ActionDefine logActionDefine = new ActionDefine();
+        logActionDefine.setParkId(parkId);
         logActionDefine.setCode(actionCode);
         return actionDefineMapper.findLogActionDefine(logActionDefine);
     }
