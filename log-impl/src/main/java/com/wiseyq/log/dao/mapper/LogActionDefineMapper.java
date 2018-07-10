@@ -15,7 +15,7 @@ public interface LogActionDefineMapper {
 
 	int deleteById(@Param("id") int id);
 
-	ActionDefine findLogActionDefine(@Param("id") int id);
+	ActionDefine findLogActionDefine(ActionDefine logActionDefine);
 
 	List<ActionDefine> findLogActionDefineList(ActionDefine logActionDefine);
 }

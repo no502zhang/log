@@ -40,7 +40,7 @@ public class ActionController {
 
     @GetMapping("/get/{id}")
     public ResponseEntity<ActionDefine> getAction(@PathVariable("id") int id) {
-        ActionDefine action = actionService.findLogActionDefine(id);
+        ActionDefine action = actionService.findLogActionDefineById(id);
         if (action != null) {
             return ResponseEntity.ok().body(action);
         } else {

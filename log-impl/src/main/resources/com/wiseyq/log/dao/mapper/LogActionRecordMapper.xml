@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiseyq.log.dao.mapper.LogActionRecordMapper">
+  <resultMap id="BaseResultMap" type="com.wiseyq.log.model.ActionRecord">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="action_id" jdbcType="INTEGER" property="actionId" />
+    <result column="user_park_id" jdbcType="VARCHAR" property="userParkId" />
+    <result column="user_org_id" jdbcType="VARCHAR" property="userOrgId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_client" jdbcType="VARCHAR" property="userClient" />
+    <result column="user_ip" jdbcType="VARCHAR" property="userIp" />
+    <result column="log_content" jdbcType="VARCHAR" property="logContent" />
+    <result column="log_year" jdbcType="CHAR" property="logYear" />
+    <result column="log_month" jdbcType="CHAR" property="logMonth" />
+    <result column="log_day" jdbcType="CHAR" property="logDay" />
+    <result column="log_time" jdbcType="CHAR" property="logTime" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    id, action_id, user_park_id, user_org_id, user_id, user_client, user_ip, log_content, log_year, log_month, log_day, log_time
+  </sql>
+  
+  <select id="findLogActionRecord" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_action_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findLogActionRecordList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_action_record
+    <where>
+      <if test="actionId != null">
+        and action_id = #{actionId,jdbcType=INTEGER}
+      </if>
+      <if test="userParkId != null">
+        and user_park_id = #{userParkId,jdbcType=VARCHAR}
+      </if>
+      <if test="userOrgId != null">
+        and user_org_id = #{userOrgId,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userClient != null">
+        and user_client = #{userClient,jdbcType=VARCHAR}
+      </if>
+      <if test="userIp != null">
+        and user_ip = #{userIp,jdbcType=VARCHAR}
+      </if>
+      <if test="logContent != null">
+        and log_content = #{logContent,jdbcType=VARCHAR}
+      </if>
+      <if test="logYear != null">
+        and log_year = #{logYear,jdbcType=CHAR}
+      </if>
+      <if test="logMonth != null">
+        and log_month = #{logMonth,jdbcType=CHAR}
+      </if>
+      <if test="logDay != null">
+        and log_day = #{logDay,jdbcType=CHAR}
+      </if>
+      <if test="logTime != null">
+        and log_time = #{logTime,jdbcType=CHAR}
+      </if>
+    </where>
+  </select>
+  
+  <select id="count" parameterType="com.wiseyq.log.model.ActionRecord" resultType="java.lang.Long">
+    select count(*) from log_action_record
+    <where>
+      <if test="actionId != null">
+        and action_id = #{actionId,jdbcType=INTEGER}
+      </if>
+      <if test="userParkId != null">
+        and user_park_id = #{userParkId,jdbcType=VARCHAR}
+      </if>
+      <if test="userOrgId != null">
+        and user_org_id = #{userOrgId,jdbcType=VARCHAR}
+      </if>
+      <if test="userId != null">
+        and user_id = #{userId,jdbcType=VARCHAR}
+      </if>
+      <if test="userClient != null">
+        and user_client = #{userClient,jdbcType=VARCHAR}
+      </if>
+      <if test="userIp != null">
+        and user_ip = #{userIp,jdbcType=VARCHAR}
+      </if>
+      <if test="logContent != null">
+        and log_content = #{logContent,jdbcType=VARCHAR}
+      </if>
+      <if test="logYear != null">
+        and log_year = #{logYear,jdbcType=CHAR}
+      </if>
+      <if test="logMonth != null">
+        and log_month = #{logMonth,jdbcType=CHAR}
+      </if>
+      <if test="logDay != null">
+        and log_day = #{logDay,jdbcType=CHAR}
+      </if>
+      <if test="logTime != null">
+        and log_time = #{logTime,jdbcType=CHAR}
+      </if>
+    </where>
+  </select>
+  
+  <insert id="insert" parameterType="com.wiseyq.log.model.ActionRecord">
+    insert into log_action_record (
+        id, 
+        action_id, 
+        user_park_id, 
+        user_org_id, 
+        user_id, 
+        user_client, 
+        user_ip, 
+        log_content, 
+        log_year, 
+        log_month, 
+        log_day, 
+        log_time)
+    values (
+        #{id,jdbcType=BIGINT}, 
+        #{actionId,jdbcType=INTEGER}, 
+        #{userParkId,jdbcType=VARCHAR}, 
+        #{userOrgId,jdbcType=VARCHAR}, 
+        #{userId,jdbcType=VARCHAR}, 
+        #{userClient,jdbcType=VARCHAR}, 
+        #{userIp,jdbcType=VARCHAR}, 
+        #{logContent,jdbcType=VARCHAR}, 
+        #{logYear,jdbcType=CHAR}, 
+        #{logMonth,jdbcType=CHAR}, 
+        #{logDay,jdbcType=CHAR}, 
+        #{logTime,jdbcType=CHAR})
+  </insert>
+
+  <update id="update" parameterType="com.wiseyq.log.model.ActionRecord">
+    update log_action_record
+    <set>
+      <if test="actionId != null">
+        action_id = #{actionId,jdbcType=INTEGER},
+      </if>
+      <if test="userParkId != null">
+        user_park_id = #{userParkId,jdbcType=VARCHAR},
+      </if>
+      <if test="userOrgId != null">
+        user_org_id = #{userOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userClient != null">
+        user_client = #{userClient,jdbcType=VARCHAR},
+      </if>
+      <if test="userIp != null">
+        user_ip = #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="logContent != null">
+        log_content = #{logContent,jdbcType=VARCHAR},
+      </if>
+      <if test="logYear != null">
+        log_year = #{logYear,jdbcType=CHAR},
+      </if>
+      <if test="logMonth != null">
+        log_month = #{logMonth,jdbcType=CHAR},
+      </if>
+      <if test="logDay != null">
+        log_day = #{logDay,jdbcType=CHAR},
+      </if>
+      <if test="logTime != null">
+        log_time = #{logTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+</mapper>

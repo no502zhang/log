@@ -13,41 +13,50 @@ import com.wiseyq.log.service.ActionService;
 
 @Service
 public class ActionServiceImpl implements ActionService {
-	@Autowired
-	private LogActionDefineMapper actionDefineMapper;
+    @Autowired
+    private LogActionDefineMapper actionDefineMapper;
 
-	@Override
-	public void insert(ActionDefine logActionDefine) {
-		actionDefineMapper.insert(logActionDefine);
-	}
+    @Override
+    public void insert(ActionDefine logActionDefine) {
+        actionDefineMapper.insert(logActionDefine);
+    }
 
-	@Override
-	public void update(ActionDefine logActionDefine) {
-		actionDefineMapper.update(logActionDefine);
-	}
+    @Override
+    public void update(ActionDefine logActionDefine) {
+        actionDefineMapper.update(logActionDefine);
+    }
 
-	@Override
-	public void deleteById(int id) {
-		actionDefineMapper.deleteById(id);
-	}
+    @Override
+    public void deleteById(int id) {
+        actionDefineMapper.deleteById(id);
+    }
 
-	@Override
-	public ActionDefine findLogActionDefine(int id) {
-		return actionDefineMapper.findLogActionDefine(id);
-	}
+    @Override
+    public ActionDefine findLogActionDefineById(int id) {
+        ActionDefine logActionDefine = new ActionDefine();
+        logActionDefine.setId(id);
+        return actionDefineMapper.findLogActionDefine(logActionDefine);
+    }
 
-	@Override
-	public PageInfo<ActionDefine> findLogActionDefinePage(ActionDefine logActionDefine, Integer pageNum,
-			Integer pageSize) {
-		if (pageNum == null) {
-			pageNum = 1;
-		}
-		if (pageSize == null) {
-			pageSize = 10;
-		}
-		PageHelper.startPage(pageNum, pageSize);
-		List<ActionDefine> list = actionDefineMapper.findLogActionDefineList(logActionDefine);
-		return new PageInfo<ActionDefine>(list);
-	}
+    @Override
+    public ActionDefine findLogActionDefineByCode(String parkId, String actionCode) {
+        ActionDefine logActionDefine = new ActionDefine();
+        logActionDefine.setCode(actionCode);
+        return actionDefineMapper.findLogActionDefine(logActionDefine);
+    }
+
+    @Override
+    public PageInfo<ActionDefine> findLogActionDefinePage(ActionDefine logActionDefine, Integer pageNum,
+            Integer pageSize) {
+        if (pageNum == null) {
+            pageNum = 1;
+        }
+        if (pageSize == null) {
+            pageSize = 10;
+        }
+        PageHelper.startPage(pageNum, pageSize);
+        List<ActionDefine> list = actionDefineMapper.findLogActionDefineList(logActionDefine);
+        return new PageInfo<ActionDefine>(list);
+    }
 
 }

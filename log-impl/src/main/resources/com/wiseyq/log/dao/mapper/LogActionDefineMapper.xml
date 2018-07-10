@@ -16,6 +16,47 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
+  <sql id="Base_Column_List">
+    id, park_id, code, name, desc_tmpl, remarks, system, module, type, is_deleted, create_time, update_time
+  </sql>
+  
+  <select id="findLogActionDefine" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_action_define
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findLogActionDefineList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_action_define
+    <where>
+        is_deleted = 'N'
+      <if test="parkId != null">
+        and park_id = #{parkId,jdbcType=VARCHAR}
+      </if>
+      <if test="code != null">
+        and code = #{code,jdbcType=VARCHAR}
+      </if>
+      <if test="name != null">
+        and name = #{name,jdbcType=VARCHAR}
+      </if>
+      <if test="remarks != null">
+        and remarks = #{remarks,jdbcType=VARCHAR}
+      </if>
+      <if test="system != null">
+        and system = #{system,jdbcType=VARCHAR}
+      </if>
+      <if test="module != null">
+        and module = #{module,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        and type = #{type,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
   <delete id="deleteById" parameterType="java.lang.Integer">
     update log_action_define
     set is_deleted = 'Y'
@@ -72,58 +113,8 @@
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
-      <if test="deleted != null">
-        is_deleted = #{deleted,jdbcType=CHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  
-  <sql id="Base_Column_List">
-    id, park_id, code, name, desc_tmpl, remarks, system, module, type, is_deleted, create_time, update_time
-  </sql>
-  
-  <select id="findLogActionDefine" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from log_action_define
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  
-  <select id="findLogActionDefineList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from log_action_define
-    <where>
-        is_deleted = 'N'
-      <if test="parkId != null">
-        and park_id = #{parkId,jdbcType=VARCHAR}
-      </if>
-      <if test="code != null">
-        and code = #{code,jdbcType=VARCHAR}
-      </if>
-      <if test="name != null">
-        and name = #{name,jdbcType=VARCHAR}
-      </if>
-      <if test="remarks != null">
-        and remarks = #{remarks,jdbcType=VARCHAR}
-      </if>
-      <if test="system != null">
-        and system = #{system,jdbcType=VARCHAR}
-      </if>
-      <if test="module != null">
-        and module = #{module,jdbcType=VARCHAR}
-      </if>
-      <if test="type != null">
-        and type = #{type,jdbcType=VARCHAR}
-      </if>
-    </where>
-  </select>
-  
+
 </mapper>
