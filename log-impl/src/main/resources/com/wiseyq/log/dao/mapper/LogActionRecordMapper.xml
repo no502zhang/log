@@ -122,6 +122,9 @@
   </select>
   
   <insert id="insert" parameterType="com.wiseyq.log.model.ActionRecord">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into log_action_record (
         id, 
         park_id, 
