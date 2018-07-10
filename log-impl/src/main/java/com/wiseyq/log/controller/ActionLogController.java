@@ -1,23 +1,33 @@
 package com.wiseyq.log.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.wiseyq.log.model.ActionLog;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.wiseyq.log.model.ActionDefine;
 
 @RestController
 @RequestMapping("/log/actionLogs")
 public class ActionLogController {
-    @PostMapping("/")
-    public ResponseEntity<ActionDefine> add(ActionDefine action) {
-        return ResponseEntity.ok().body(action);
+    @PostMapping("/add")
+    public ResponseEntity<ActionLog> add(@RequestBody ActionLog actionLog) {
+        return ResponseEntity.ok().body(actionLog);
     }
 
-    @GetMapping("/log/actionLogs/count")
-    public ResponseEntity<Integer> getCount(ActionDefine action) {
+    @GetMapping("/count")
+    public ResponseEntity<Integer> getCount(@RequestParam("parkId") String parkId, @RequestParam("actionCode") String actionCode) {
         return ResponseEntity.ok().body(0);
+    }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<ActionLog> getAction(@PathVariable("id") int id) {
+        return ResponseEntity.ok().body(null);
+    }
+
+    @GetMapping("/list/")
+    public ResponseEntity<PageInfo<ActionLog>> listAction(ActionLog actionLog, Integer pageNum, Integer pageSize) {
+        return ResponseEntity.ok().body(null);
     }
 }

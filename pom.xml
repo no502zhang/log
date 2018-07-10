@@ -35,15 +35,24 @@
 
 	<modules>
 		<module>log-api</module>
-        <module>log-impl</module>
+		<module>log-impl</module>
 		<module>log-starter</module>
-    </modules>
+	</modules>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<optimize>true</optimize>
+					<debug>true</debug>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>false</showWarnings>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
