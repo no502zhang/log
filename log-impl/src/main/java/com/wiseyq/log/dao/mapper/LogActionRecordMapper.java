@@ -13,7 +13,7 @@ public interface LogActionRecordMapper {
 
     int update(ActionRecord logActionRecord);
 
-    ActionRecord findLogActionRecord(@Param("id") int id);
+    ActionRecord findLogActionRecord(@Param("id") long id);
 
     List<ActionRecord> findLogActionRecordList(ActionRecord logActionRecord);
 

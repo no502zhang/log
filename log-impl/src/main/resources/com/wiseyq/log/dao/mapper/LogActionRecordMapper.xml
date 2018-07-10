@@ -29,19 +29,19 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   
-  <select id="findLogActionRecordList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findLogActionRecordList" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from log_action_record
     <where>
       <if test="parkId != null">
-        and park_id = #{parkId,jdbcType=VARCHAR},
+        and park_id = #{parkId,jdbcType=VARCHAR}
       </if>
       <if test="actionId != null">
         and action_id = #{actionId,jdbcType=INTEGER}
       </if>
       <if test="sourceId != null">
-        and source_id = #{sourceId,jdbcType=VARCHAR},
+        and source_id = #{sourceId,jdbcType=VARCHAR}
       </if>
       <if test="userParkId != null">
         and user_park_id = #{userParkId,jdbcType=VARCHAR}
@@ -80,13 +80,13 @@
     select count(*) from log_action_record
     <where>
       <if test="parkId != null">
-        and park_id = #{parkId,jdbcType=VARCHAR},
+        and park_id = #{parkId,jdbcType=VARCHAR}
       </if>
       <if test="actionId != null">
         and action_id = #{actionId,jdbcType=INTEGER}
       </if>
       <if test="sourceId != null">
-        and source_id = #{sourceId,jdbcType=VARCHAR},
+        and source_id = #{sourceId,jdbcType=VARCHAR}
       </if>
       <if test="userParkId != null">
         and user_park_id = #{userParkId,jdbcType=VARCHAR}
@@ -115,10 +115,46 @@
       <if test="logDay != null">
         and log_day = #{logDay,jdbcType=CHAR}
       </if>
-      <if test="logTime != null">
-        and log_time = #{logTime,jdbcType=CHAR}
-      </if>
     </where>
+    group by
+      <trim suffixOverrides=",">
+        <if test="parkId != null">
+          park_id,
+        </if>
+        <if test="actionId != null">
+          action_id,
+        </if>
+        <if test="sourceId != null">
+          source_id,
+        </if>
+        <if test="userParkId != null">
+          user_park_id,
+        </if>
+        <if test="userOrgId != null">
+          user_org_id,
+        </if>
+        <if test="userId != null">
+          user_id,
+        </if>
+        <if test="userClient != null">
+          user_client,
+        </if>
+        <if test="userIp != null">
+          user_ip,
+        </if>
+        <if test="logContent != null">
+          log_content,
+        </if>
+        <if test="logYear != null">
+          log_year,
+        </if>
+        <if test="logMonth != null">
+          log_month,
+        </if>
+        <if test="logDay != null">
+          log_day,
+        </if>
+      </trim>
   </select>
   
   <insert id="insert" parameterType="com.wiseyq.log.model.ActionRecord">

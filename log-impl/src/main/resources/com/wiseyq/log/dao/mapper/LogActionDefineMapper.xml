@@ -38,7 +38,7 @@
       </choose>
   </select>
   
-  <select id="findLogActionDefineList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findLogActionDefineList" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from log_action_define
