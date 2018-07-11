@@ -1,7 +1,6 @@
 package com.wiseyq.log.service;
 
 import com.github.pagehelper.PageInfo;
-import com.wiseyq.log.model.ActionDefine;
 import com.wiseyq.log.model.ActionLog;
 import com.wiseyq.log.model.ActionRecord;
 
