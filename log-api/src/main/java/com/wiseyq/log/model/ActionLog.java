@@ -7,6 +7,7 @@ public class ActionLog {
     private String parkId;
     private String actionCode;
     private String sourceId;
+    private Long count;
     private Map<String, String> templateParam;
 
     public String getParkId() {
@@ -31,6 +32,14 @@ public class ActionLog {
 
     public void setSourceId(String sourceId) {
         this.sourceId = sourceId;
+    }
+
+    public Long getCount() {
+        return count;
+    }
+
+    public void setCount(Long count) {
+        this.count = count;
     }
 
     public Map<String, String> getTemplateParam() {

@@ -33,6 +33,7 @@ public class ActionLogServiceImpl implements ActionLogService {
         ActionRecord record = new ActionRecord();
         record.setParkId(action.getParkId());
         record.setActionId(action.getId());
+        record.setSourceId(logActionLog.getSourceId());
         actionRecordMapper.insert(record);
     }
 

@@ -27,7 +27,7 @@ public class ActionLogController {
     }
 
     @GetMapping({"/count", "/count/"})
-    public ResponseEntity<Long> getCount(@RequestParam(value = "parkId", required = false) String parkId,
+    public ResponseEntity<ActionLog> getCount(@RequestParam(value = "parkId", required = false) String parkId,
                                          @RequestParam("actionCode") String actionCode,
                                          @RequestParam(value = "sourceId", required = false) String sourceId) {
         if (StringUtils.isBlank(parkId)) {
@@ -38,7 +38,8 @@ public class ActionLogController {
         logActionLog.setActionCode(actionCode);
         logActionLog.setSourceId(sourceId);
         long count = actionLogService.count(logActionLog);
-        return ResponseEntity.ok().body(count);
+        logActionLog.setCount(count);
+        return ResponseEntity.ok().body(logActionLog);
     }
 
     @GetMapping("/get/{id}")

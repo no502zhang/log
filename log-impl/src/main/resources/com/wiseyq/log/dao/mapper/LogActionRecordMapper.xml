@@ -116,45 +116,6 @@
         and log_day = #{logDay,jdbcType=CHAR}
       </if>
     </where>
-    group by
-      <trim suffixOverrides=",">
-        <if test="parkId != null">
-          park_id,
-        </if>
-        <if test="actionId != null">
-          action_id,
-        </if>
-        <if test="sourceId != null">
-          source_id,
-        </if>
-        <if test="userParkId != null">
-          user_park_id,
-        </if>
-        <if test="userOrgId != null">
-          user_org_id,
-        </if>
-        <if test="userId != null">
-          user_id,
-        </if>
-        <if test="userClient != null">
-          user_client,
-        </if>
-        <if test="userIp != null">
-          user_ip,
-        </if>
-        <if test="logContent != null">
-          log_content,
-        </if>
-        <if test="logYear != null">
-          log_year,
-        </if>
-        <if test="logMonth != null">
-          log_month,
-        </if>
-        <if test="logDay != null">
-          log_day,
-        </if>
-      </trim>
   </select>
   
   <insert id="insert" parameterType="com.wiseyq.log.model.ActionRecord">
