@@ -1,6 +1,7 @@
 package com.wiseyq.log.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.wiseyq.core.security.SessionUtil;
 import com.wiseyq.log.model.ActionLog;
 import com.wiseyq.log.model.ActionRecord;
 import com.wiseyq.log.service.ActionLogService;
@@ -16,22 +17,21 @@ public class ActionLogController {
     @Autowired
     private ActionLogService actionLogService;
 
-    @PostMapping("/add")
+    @PostMapping({"/add", "/add/"})
     public ResponseEntity<ActionLog> add(@RequestBody ActionLog actionLog) {
         if (StringUtils.isBlank(actionLog.getParkId())) {
-            // TODO
-            actionLog.setParkId("");
+            actionLog.setParkId(SessionUtil.getParkId());
         }
         actionLogService.insert(actionLog);
         return ResponseEntity.ok().body(actionLog);
     }
 
-    @GetMapping("/count")
+    @GetMapping({"/count", "/count/"})
     public ResponseEntity<Long> getCount(@RequestParam(value = "parkId", required = false) String parkId,
                                          @RequestParam("actionCode") String actionCode,
                                          @RequestParam(value = "sourceId", required = false) String sourceId) {
         if (StringUtils.isBlank(parkId)) {
-            // TODO
+            parkId = SessionUtil.getParkId();
         }
         ActionLog logActionLog = new ActionLog();
         logActionLog.setParkId(parkId);
@@ -51,7 +51,7 @@ public class ActionLogController {
         }
     }
 
-    @GetMapping("/list/")
+    @GetMapping({"/list", "/list/"})
     public ResponseEntity<PageInfo<ActionRecord>> listAction(ActionLog actionLog, Integer pageNum, Integer pageSize) {
         PageInfo<ActionRecord> page = actionLogService.findLogActionRecordPage(actionLog, pageNum, pageSize);
         return ResponseEntity.ok().body(page);

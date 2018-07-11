@@ -14,7 +14,7 @@ public class ActionController {
     @Autowired
     private ActionService actionService;
 
-    @PostMapping("/add/")
+    @PostMapping({"/add", "/add/"})
     public ResponseEntity<ActionDefine> add(@RequestBody ActionDefine action) {
         actionService.insert(action);
         return ResponseEntity.ok().body(action);
@@ -43,7 +43,7 @@ public class ActionController {
         }
     }
 
-    @GetMapping("/list/")
+    @GetMapping({"/list", "/list/"})
     public ResponseEntity<PageInfo<ActionDefine>> listAction(ActionDefine action, Integer pageNum,
                                                              Integer pageSize) {
         PageInfo<ActionDefine> page = actionService.findLogActionDefinePage(action, pageNum, pageSize);
