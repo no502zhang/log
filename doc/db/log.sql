@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 测试环境
-Source Server Version : 50628
-Source Host           : 192.168.91.105:3306
-Source Database       : dev_cc_log
+Source Server         : 华为云
+Source Server Version : 50639
+Source Host           : 192.168.95.58:38635
+Source Database       : cofco_pre_cc_log
 
 Target Server Type    : MYSQL
-Target Server Version : 50628
+Target Server Version : 50639
 File Encoding         : 65001
 
-Date: 2018-07-10 18:54:18
+Date: 2018-07-12 19:36:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,7 +21,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `log_action_define`;
 CREATE TABLE `log_action_define` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `park_id` varchar(32) NOT NULL COMMENT '所属园区',
+  `park_id` varchar(32) DEFAULT NULL COMMENT '所属园区',
   `code` varchar(50) NOT NULL COMMENT '编码',
   `name` varchar(100) NOT NULL COMMENT '名称',
   `desc_tmpl` varchar(1000) DEFAULT NULL COMMENT '描述模板',
@@ -29,10 +29,11 @@ CREATE TABLE `log_action_define` (
   `system` varchar(100) DEFAULT NULL COMMENT '系统',
   `module` varchar(100) DEFAULT NULL COMMENT '模块',
   `type` varchar(100) DEFAULT NULL COMMENT '类型',
-  `is_deleted` char(1) DEFAULT 'N' COMMENT '是否删除',
+  `is_deleted` char(1) NOT NULL DEFAULT 'N' COMMENT '是否删除',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_code` (`park_id`,`code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行为定义';
 
 -- ----------------------------
@@ -54,5 +55,6 @@ CREATE TABLE `log_action_record` (
   `log_month` char(2) NOT NULL COMMENT '记录月',
   `log_day` char(2) NOT NULL COMMENT '记录日',
   `log_time` char(6) NOT NULL COMMENT '记录时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idx_park_action_source` (`park_id`,`action_id`,`source_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行为记录';

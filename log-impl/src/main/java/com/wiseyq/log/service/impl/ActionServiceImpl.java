@@ -40,9 +40,18 @@ public class ActionServiceImpl implements ActionService {
 
     @Override
     public ActionDefine findLogActionDefineByCode(String parkId, String actionCode) {
+        ActionDefine action = null;
         ActionDefine logActionDefine = new ActionDefine();
         logActionDefine.setParkId(parkId);
         logActionDefine.setCode(actionCode);
+        action = actionDefineMapper.findLogActionDefine(logActionDefine);
+        if (action == null) {
+            // 约定先于配置
+            // 当前园区没有配置时, 取默认配置
+            ActionDefine defaultActionQuery = new ActionDefine();
+            defaultActionQuery.setCode(actionCode);
+            action = actionDefineMapper.findLogActionDefine(defaultActionQuery);
+        }
         return actionDefineMapper.findLogActionDefine(logActionDefine);
     }
 

@@ -31,7 +31,7 @@ public class ActionLogServiceImpl implements ActionLogService {
             throw new IllegalArgumentException("actionCode不存在");
         }
         ActionRecord record = new ActionRecord();
-        record.setParkId(action.getParkId());
+        record.setParkId(logActionLog.getParkId());
         record.setActionId(action.getId());
         record.setSourceId(logActionLog.getSourceId());
         actionRecordMapper.insert(record);
@@ -45,7 +45,7 @@ public class ActionLogServiceImpl implements ActionLogService {
             throw new IllegalArgumentException("actionCode不存在");
         }
         ActionRecord record = new ActionRecord();
-        record.setParkId(action.getParkId());
+        record.setParkId(logActionLog.getParkId());
         record.setActionId(action.getId());
         record.setSourceId(logActionLog.getSourceId());
         return actionRecordMapper.count(record);

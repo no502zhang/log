@@ -17,7 +17,7 @@ public class ActionLogController {
     @Autowired
     private ActionLogService actionLogService;
 
-    @PostMapping({"/add", "/add/"})
+    @PostMapping({ "/add", "/add/" })
     public ResponseEntity<ActionLog> add(@RequestBody ActionLog actionLog) {
         if (StringUtils.isBlank(actionLog.getParkId())) {
             actionLog.setParkId(SessionUtil.getParkId());
@@ -26,10 +26,10 @@ public class ActionLogController {
         return ResponseEntity.ok().body(actionLog);
     }
 
-    @GetMapping({"/count", "/count/"})
+    @GetMapping({ "/count", "/count/" })
     public ResponseEntity<ActionLog> getCount(@RequestParam(value = "parkId", required = false) String parkId,
-                                         @RequestParam("actionCode") String actionCode,
-                                         @RequestParam(value = "sourceId", required = false) String sourceId) {
+            @RequestParam("actionCode") String actionCode,
+            @RequestParam(value = "sourceId", required = false) String sourceId) {
         if (StringUtils.isBlank(parkId)) {
             parkId = SessionUtil.getParkId();
         }
@@ -43,7 +43,7 @@ public class ActionLogController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<ActionRecord> getAction(@PathVariable("id") long id) {
+    public ResponseEntity<ActionRecord> getRecord(@PathVariable("id") long id) {
         ActionRecord record = actionLogService.findLogActionRecordById(id);
         if (record != null) {
             return ResponseEntity.ok().body(record);
@@ -52,8 +52,11 @@ public class ActionLogController {
         }
     }
 
-    @GetMapping({"/list", "/list/"})
-    public ResponseEntity<PageInfo<ActionRecord>> listAction(ActionLog actionLog, Integer pageNum, Integer pageSize) {
+    @GetMapping({ "/list", "/list/" })
+    public ResponseEntity<PageInfo<ActionRecord>> listRecord(ActionLog actionLog, Integer pageNum, Integer pageSize) {
+        if (StringUtils.isBlank(actionLog.getParkId())) {
+            actionLog.setParkId(SessionUtil.getParkId());
+        }
         PageInfo<ActionRecord> page = actionLogService.findLogActionRecordPage(actionLog, pageNum, pageSize);
         return ResponseEntity.ok().body(page);
     }
