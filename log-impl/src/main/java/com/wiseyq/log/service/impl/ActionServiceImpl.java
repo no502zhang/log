@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wiseyq.log.constant.SystemConstants;
 import com.wiseyq.log.dao.mapper.LogActionDefineMapper;
 import com.wiseyq.log.model.ActionDefine;
 import com.wiseyq.log.service.ActionService;
@@ -49,10 +50,11 @@ public class ActionServiceImpl implements ActionService {
             // 约定先于配置
             // 当前园区没有配置时, 取默认配置
             ActionDefine defaultActionQuery = new ActionDefine();
+            defaultActionQuery.setParkId(SystemConstants.DEFAULT_PARK_ID);
             defaultActionQuery.setCode(actionCode);
             action = actionDefineMapper.findLogActionDefine(defaultActionQuery);
         }
-        return actionDefineMapper.findLogActionDefine(logActionDefine);
+        return action;
     }
 
     @Override

@@ -18,7 +18,7 @@ public class ActionLogController {
     private ActionLogService actionLogService;
 
     @PostMapping({ "/add", "/add/" })
-    public ResponseEntity<ActionLog> add(@RequestBody ActionLog actionLog) {
+    public ResponseEntity<ActionLog> add(ActionLog actionLog) {
         if (StringUtils.isBlank(actionLog.getParkId())) {
             actionLog.setParkId(SessionUtil.getParkId());
         }

@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wiseyq.core.security.SessionUtil;
 import com.wiseyq.log.dao.mapper.LogActionRecordMapper;
 import com.wiseyq.log.model.ActionDefine;
 import com.wiseyq.log.model.ActionLog;
@@ -34,6 +35,12 @@ public class ActionLogServiceImpl implements ActionLogService {
         record.setParkId(logActionLog.getParkId());
         record.setActionId(action.getId());
         record.setSourceId(logActionLog.getSourceId());
+        // 记录session中的值
+        record.setUserParkId(SessionUtil.getParkId());
+        record.setUserOrgId(SessionUtil.getCompanyId());
+        record.setUserId(SessionUtil.getLoginUserId());
+        record.setUserClient(SessionUtil.getLoginFrom());
+        
         actionRecordMapper.insert(record);
     }
 

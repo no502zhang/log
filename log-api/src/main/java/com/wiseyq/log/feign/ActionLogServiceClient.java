@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 public interface ActionLogServiceClient {
 
     @PostMapping("/log/actionLogs/add")
-    ActionLog add(@RequestBody ActionLog action);
+    ActionLog add(ActionLog actionLog);
 
     @GetMapping("/log/actionLogs/count")
-    int getCount(@RequestParam(value = "parkId", required = false) String parkId,
+    ActionLog getCount(@RequestParam(value = "parkId", required = false) String parkId,
             @RequestParam("actionCode") String actionCode,
             @RequestParam(value = "sourceId", required = false) String sourceId);
 

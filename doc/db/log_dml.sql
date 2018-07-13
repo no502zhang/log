@@ -1,0 +1,6 @@
+INSERT INTO `log_action_define` (`park_id`, `code`, `name`, `desc_tmpl`, `remarks`, `system`, `module`, `type`, `is_deleted`) VALUES ('platformPark', 'service_view', '查看服务', NULL, NULL, NULL, NULL, NULL, 'N');
+INSERT INTO `log_action_define` (`park_id`, `code`, `name`, `desc_tmpl`, `remarks`, `system`, `module`, `type`, `is_deleted`) VALUES ('platformPark', 'activity_view', '查看活动', NULL, NULL, NULL, NULL, NULL, 'N');
+INSERT INTO `log_action_define` (`park_id`, `code`, `name`, `desc_tmpl`, `remarks`, `system`, `module`, `type`, `is_deleted`) VALUES ('platformPark', 'news_view', '查看新闻', NULL, NULL, NULL, NULL, NULL, 'N');
+INSERT INTO `log_action_define` (`park_id`, `code`, `name`, `desc_tmpl`, `remarks`, `system`, `module`, `type`, `is_deleted`) VALUES ('platformPark', 'banner_view', '查看banner', NULL, NULL, NULL, NULL, NULL, 'N');
+INSERT INTO `log_action_define` (`park_id`, `code`, `name`, `desc_tmpl`, `remarks`, `system`, `module`, `type`, `is_deleted`) VALUES ('platformPark', 'service_use', '使用服务', NULL, NULL, NULL, NULL, NULL, 'N');
+INSERT INTO `log_action_define` (`park_id`, `code`, `name`, `desc_tmpl`, `remarks`, `system`, `module`, `type`, `is_deleted`) VALUES ('platformPark', 'topic_view', '查看新鲜事', NULL, NULL, NULL, NULL, NULL, 'N');
